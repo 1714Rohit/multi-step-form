@@ -7,7 +7,6 @@ const form = document.getElementById("multiStepForm");
 
 let currentStep = 0;
 
-// Show the current step
 function updateFormSteps() {
   formSteps.forEach((step, index) => {
     step.classList.toggle("active", index === currentStep);
@@ -24,7 +23,7 @@ function updateFormSteps() {
   progress.style.width = `${(currentStep) / (steps.length - 1) * 100}%`;
 }
 
-// Validate fields
+
 function validateCurrentStep() {
   const inputs = formSteps[currentStep].querySelectorAll("input");
   for (let input of inputs) {
@@ -35,8 +34,6 @@ function validateCurrentStep() {
   }
   return true;
 }
-
-// Next button
 nextBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     if (validateCurrentStep()) {
@@ -46,7 +43,6 @@ nextBtns.forEach(btn => {
   });
 });
 
-// Previous button
 prevBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     currentStep--;
@@ -54,7 +50,6 @@ prevBtns.forEach(btn => {
   });
 });
 
-// On form submit
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (validateCurrentStep()) {
